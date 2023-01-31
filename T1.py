@@ -1,19 +1,13 @@
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
+from creat_bot import dp
 from aiogram.utils import executor
 
-import Config
 
-bot = Bot(token='5840098846:AAHAadx8i0Fm06419vEzh37Rncrlgo75AY8')
-dp = Dispatcher(bot)
+async def on_startup(_):  # aiogram is asynchron library( better speed and functionality ,bot switches between
+    print('Bot is online')  # functions in time of possible delays
 
+from Handlers import client, admin, other
 
-@dp.message_handler()
-async def echo_send(message : types.Message):
-    await message.answer(message.text)
-    await message.reply(message.text)
-    await bot.send_message(message.from_user.id, message.text)
+client.register_handlers_client(dp)
 
-
-executor.start_polling(dp, skip_updates=True)
+executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
 

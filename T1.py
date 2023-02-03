@@ -7,11 +7,13 @@ async def on_startup(_):  # aiogram is asynchron library( better speed and funct
     print('Bot is online')  # functions in time of possible delays
     sqlite_db.sql_start()
 
+
 from Handlers import client, admin, other
+
 
 client.register_handlers_client(dp)
 admin.register_handlers_admin(dp)
-# other.register_handlers_other(dp)
+other.register_handlers_other(dp)
 
 executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
 

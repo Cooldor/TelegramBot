@@ -80,7 +80,7 @@ def callback_inline_buttons(call):
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='How are you??',
                                   reply_markup=None)
             # show alert
-            bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
+            bot.answer_callback_query(callback_query_id=call.id, show_alert=True,
                                       text='❗️THIS IS TESTING NOTIFICATION❗️')
 
     except Exception as e:
